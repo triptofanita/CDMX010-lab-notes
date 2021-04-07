@@ -12,11 +12,11 @@ export default function CreateData() {
         const getNote = async () => {
             const {docs} = await store.collection('postIt').get();
             const arrNote = docs.map(item => ({id:item.id, ...item.data()}));
-            //llamar al nuevo array que contiend la data
-                setGetNote(arrNote)
+            //llamar al nuevo array que contiene la data
+             setGetNote(arrNote)
         }
-        getNote();
-        })
+        getNote()
+        }, [])
 
     const createNotes = async (e) => {
         e.preventDefault();
@@ -37,8 +37,18 @@ export default function CreateData() {
             const createData = await store.collection('postIt').add(secretNotes)
         }catch(e)
     {}}
-        //eslint marca error si quito las llaves l33
-        //pasar al form const para crear note en fb
+        //eslint marca error si quito las llaves l40
+    const deleteNote = async (id) => {
+        try{
+            await store.collection('postIt').doc(id).delete();
+            const {docs} = await store.collection('postIt').get();
+            const arrNote = docs.map(item => ({id:item.id, ...item.data()}));
+            //llamar otra vez al array que contiene la data
+             setGetNote(arrNote)
+        }catch(e)
+    {}}
+        //pasar const al form para crear note en fb
+        //No puedo cerrar etiqueta en textarea
     return (
         <div className="container">
             <div className="row">
@@ -54,10 +64,6 @@ export default function CreateData() {
                         type="submit"
                         value="Add"
                         />
-                        <input className="btn btn-dark btn-sm mt-3"
-                        type="submit"
-                        value="Delete"
-                        />
                     </form>
                     {
                         error ?
@@ -66,16 +72,26 @@ export default function CreateData() {
                         </div>)
                         :
                         (<span></span>)
-                    };
+                    }
                 </div>
                 <div className="row">
                     <h2>Todas mis notas</h2>
-                    {getNote.map(item => (
-                        <div className="getPostIt">
-                            <textarea key={item.id}>{item.note}</textarea>
+                        <div className="row">
+                            <div className="unityNote">
+                                    <div className="getPostIt">
+                                        {getNote.map(item => (
+                                            <div className="textareaNote">
+                                                <textarea key={item.id}>{item.note}</textarea>
+                                                <div className="button">
+                                                    <button className="btnUpdate" type="submit" value="Update">Update</button>
+                                                    <button onClick={(id) => {deleteNote(item.id)}} className="btnDelete" type="submit" value="Delete">Delete</button>
+                                                </div>
+                                            </div>
+                                        ))
+                                        }
+                                    </div>
+                            </div>
                         </div>
-                    ))
-                    };
                 </div>
             </div>
         </div>

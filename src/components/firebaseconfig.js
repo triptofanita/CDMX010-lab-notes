@@ -2,12 +2,12 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyARiwIMfmui4oX7TA4nyRUAzBCp78BaXbE",
-    authDomain: "secret-notes-573aa.firebaseapp.com",
-    projectId: "secret-notes-573aa",
-    storageBucket: "secret-notes-573aa.appspot.com",
-    messagingSenderId: "846350952623",
-    appId: "1:846350952623:web:2b96a66d0844cc5ba94c5a"
+  apiKey: "AIzaSyCsbb9fHmuK84hCDv62BRbjcOpVLgOwmWs",
+  authDomain: "secret-notes-ii.firebaseapp.com",
+  projectId: "secret-notes-ii",
+  storageBucket: "secret-notes-ii.appspot.com",
+  messagingSenderId: "347944666478",
+  appId: "1:347944666478:web:0afac988cd932eb3a76d7f"
   };
   // Initialize Firebase
  const fb = firebase.initializeApp(firebaseConfig);
