@@ -5,6 +5,16 @@
 * {
   background-color: #F1E3E4;
 }
+/*signup*/
+.signupContainer{
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.loginForm{
+flex-direction: column;
+}
 
 .home h2 {
   justify-content: center;
