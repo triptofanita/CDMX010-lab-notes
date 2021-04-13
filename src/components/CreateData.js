@@ -17,30 +17,31 @@ export default function CreateData () {
         const arrNote = docs.map(item => ({id:item.id, ...item.data()}));
             //llamar al nuevo array que contiene la data
         setGetNote(arrNote);
+        setNote("");
       }
       getNote()
       }, [])
 
     const createNotes = async (e) => {
       e.preventDefault(e);
-      if (!note.trim()){
-      //verificar setError
-      setError("Olvidaste escribir la nota")
-      }
-      const secretNotes = {
-        note:note
-      }
       try{
-      //Renderear la data
+        const secretNotes = {
+          note:note
+        };
+        if (!note){
+          alert("Don't forget keep your idea");
+        }else{
+
         await store.collection('postIt').add(secretNotes);
         const {docs} = await store.collection('postIt').get();
-        const arrNote = docs.map(item => ({id:item.id, ...item.data()}));
+        const arrNote = docs.map((item) => ({id:item.id, ...item.data()}));
         setGetNote(arrNote);
-        setNote('');
-      }catch(error){
-        console.log(error)
-      }
+        setNote("");
+        }
+      }catch (error){
+      console.log(error)}
     }
+
 
     const deleteNote = async (id) => {
       try{
@@ -63,7 +64,7 @@ export default function CreateData () {
 
     const setUpdate = async (e) => {
       e.preventDefault(e);
-      if (!note.trim()){
+      if (!note){
       //verificar setError
       setError("Olvidaste editar la nota")
       }
@@ -118,7 +119,7 @@ export default function CreateData () {
                   <div className="getPostIt">
                     {getNote.map(item => (
                       <div className="textAreaNote">
-                        <textarea className="printedNote" key={item.id+1}>{item.note}</textarea>
+                        <textarea className="printedNote" key={item.id}>{item.note}</textarea>
                           <div className="button">
                             <button onClick={(id) => {handleUpdate(item.id)}} className="btnUpdate" type="submit" value="Update">Update</button>
                             <button onClick={(id) => {deleteNote(item.id)}} className="btnDelete" type="submit" value="Delete">Delete</button>
