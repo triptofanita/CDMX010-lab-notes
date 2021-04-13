@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { store } from './firebaseconfig';
 
 export default function CreateData () {
+
   const [updateMode, setUpdateMode] = useState(false);
   const [idNote, setIdNote] = useState('');
   const [note, setNote] = useState('');
-  //las notas se alojaran en este array
   const [getNote, setGetNote] = useState([]);
   const [error, setError] = useState('');
-
+  const textAreaContainer = document.getElementById("inputSetNote");
 
     //Se comunica con firebase para obtener la data
     useEffect (() => {
@@ -17,7 +17,6 @@ export default function CreateData () {
         const arrNote = docs.map(item => ({id:item.id, ...item.data()}));
             //llamar al nuevo array que contiene la data
         setGetNote(arrNote);
-        setNote("");
       }
       getNote()
       }, [])
@@ -36,7 +35,7 @@ export default function CreateData () {
         const {docs} = await store.collection('postIt').get();
         const arrNote = docs.map((item) => ({id:item.id, ...item.data()}));
         setGetNote(arrNote);
-        setNote("");
+        textAreaContainer.value='';
         }
       }catch (error){
       console.log(error)}
@@ -64,26 +63,25 @@ export default function CreateData () {
 
     const setUpdate = async (e) => {
       e.preventDefault(e);
+      try{
       if (!note){
       //verificar setError
       setError("Olvidaste editar la nota")
-      }
-      try {
-          //se realizaron pruebas solo con id en l 73, 80
-       const updatedCollection = await store.collection('postIt').doc(idNote).update({
+      }else{
+        const updatedCollection = await store.collection('postIt').doc(idNote).update({
           note:note
         })
         //await store.collection('postIt').doc(idNote).set(updatedCollection)
         const {docs} = await store.collection('postIt').get(updatedCollection);
-        const newArrNote = docs.map(item => (item.id === idNote ? {idNote: item.id,...item.data} : item
+        const newArrNote = docs.map(item => (item.id === idNote ? {id: item.id,...item.data} : item
         ))
           setGetNote(newArrNote);
           setUpdateMode(false);
           setIdNote('');
           setNote('');
-      }catch (e){
-        console.log(e)
-      }
+        }
+      }catch(e){
+        console.log(e)}
     }
 
     return (
@@ -95,6 +93,7 @@ export default function CreateData () {
                 <div className="textareaSetNote">
                   <textarea onChange={(e)=>{setNote(e.target.value)}}
                             className="inputNote"
+                            id="inputSetNote"
                             placeholder="Keep an idea"
                             type="text"
                             />
@@ -119,9 +118,12 @@ export default function CreateData () {
                   <div className="getPostIt">
                     {getNote.map(item => (
                       <div className="textAreaNote">
-                        <textarea className="printedNote" key={item.id}>{item.note}</textarea>
+                        <textarea className="printedNote"
+                        id="editor"
+                         key={item.id}>{item.note}
+                        </textarea>
                           <div className="button">
-                            <button onClick={(id) => {handleUpdate(item.id)}} className="btnUpdate" type="submit" value="Update">Update</button>
+                            <button onClick={(id) => {handleUpdate(item)}} className="btnUpdate" type="submit" value="Update">Update</button>
                             <button onClick={(id) => {deleteNote(item.id)}} className="btnDelete" type="submit" value="Delete">Delete</button>
                           </div>
                       </div>
