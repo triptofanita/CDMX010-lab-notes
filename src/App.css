@@ -5,40 +5,224 @@
 * {
   background-color: #F1E3E4;
 }
+
+.home h2 {
+  text-align: center;
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 45px;
+  width: 90%;
+  margin-top: 55px;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.home h4 {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+}
+
+.homeImgContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.home img{
+  justify-content: center;
+  width: 50%;
+  height: 60%;
+}
+
+.homeBtn{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 60px;
+}
+.signinBtn, .signupBtn{
+border: none;
+background-color:#CCBCBC;
+color:black;
+font-size: 18px;
+letter-spacing: 2px;
+font-family: 'Montserrat', sans-serif;
+text-align: center;
+width: 270px;
+height: 45px;
+margin-left: 15px;
+margin-right: 10px;
+margin-bottom: 35px;
+border-radius: 25px;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.signupBtn{
+  background-color: #BB9BB0 ;
+}
 /*signup*/
 .signupContainer{
 display: flex;
 align-items: center;
+justify-content: center;
 flex-direction: column;
+margin-left: 30px;
 }
 
-.loginForm{
-flex-direction: column;
+.signup{
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: 20px;
 }
-
-.home h2 {
+.signup h2 {
   justify-content: center;
   font-family: 'La Belle Aurore', cursive;
-  font-size: 52px;
+  font-size: 45px;
+  width: 90%;
+  margin-top: 55px;
+  margin-left: 45px;
+  margin-right: 50px;
 }
 
-.home h4 {
-  justify-content: center;
+.signup h4 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
+  font-size: 18px;
+  margin-left: 40px;
+  margin-right: 20px;
 }
 
-/*CRUD*/
-.mainContainer {
-  background-color: rebeccapurple;
+.signupG{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 60px;
 }
+
+.signin{
+  margin-bottom: 70px;
+}
+
+.buttonLoginG{
+border: none;
+background-color: #BB9BB0;
+color:black;
+font-size: 18px;
+letter-spacing: 2px;
+font-family: 'Montserrat', sans-serif;
+text-align: center;
+width: 270px;
+height: 45px;
+margin-left: 15px;
+margin-right: 10px;
+border-radius: 25px;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.signupForm{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  margin-top: 50px;
+  margin-left: 5px;
+  margin-right: 20px;
+}
+
+.userMail, .signupPass, .loginEmail, .loginPass{
+  background: #FFFFFF;
+  color:black;
+  width: 270px;
+  height: 35px;
+  margin-bottom: 35px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+  border:none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.btnUserRegister, .btnUserLogin{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    width: 160px;
+    height: 35px;
+    margin-top: 10px;
+    text-align: center;
+    border: none;
+    background-color: #BB9BB0;
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+.likeSignup {
+  display: flex;
+  justify-content: center;
+}
+
+.likeSignup img{
+width: 10%;
+height: 10%;
+}
+
+/*login*/
+
+.login{
+text-align: center;
+}
+
+#btnSignupGoogle{
+display:none;
+}
+
+.btnUserLogin,
+.buttonLoginG{
+background-color: #CCBCBC;
+}
+
+.login h2{
+  justify-content: center;
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 45px;
+  width: 90%;
+  margin-top: 55px;
+  margin-left: 20px;
+  margin-right: 35px;
+}
+
+.login h4{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  margin-left: 30px;
+  margin-right: 20px;
+}
+
+.likeLogin{
+  display: flex;
+  justify-content: center;
+}
+.likeLogin img{
+  width: 10%;
+  height: 10%;
+}
+/*CRUD*/
 .notesContainer {
-  flex-wrap: wrap;
-  background-color: aquamarine;
+  margin-top: 15px;
 }
 
 .createNoteForm {
-background-color: purple;
 display:flex;
 justify-content: center;
 align-items: center;
@@ -50,59 +234,102 @@ margin-right: 10px;
 .setNoteForm {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  background-color: blue;
   flex-wrap: wrap;
 }
 .textareaSetNote{
-  height: 120px;
+  height: 140px;
 }
 .inputNote {
   align-content: flex-start;
   justify-content: start;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  height: 120px;
+  height: 140px;
+  background-color: white;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.buttonAddNote{
+  display: flex;
+  justify-content: center;
 }
 
 .buttonAdd{
+  text-align: center;
   font-family: 'Montserrat', sans-serif;
+  border:none;
   font-size: 14px;
   justify-content: end;
   align-items: flex-end;
-  width:30%;
+  margin-top:10px;
+  margin-left: 23px;
+  width:70%;
   height:90%;
+  background-color: #CCBCBC;
+  border-radius: 25px;
+  box-shadow: 0px 3px 3px (0, 0, 0, 0.3);
 }
 
 .unityNote{
-  flex-direction: row;
   margin-left: 10px;
   margin-right: 10px;
 }
+
 .getPostIt{
-  width: 50%;
-  height: 35%;
-  background-color: black;
-  width:45%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border:red;
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 25px;
+  margin-right:25px;
 }
 .textAreaNote {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   height: 160px;
-  width: 100%;
+  width: 45%;
   margin-bottom: 10px;
   background-color: white;
+  border-radius: 3px;
+  box-shadow: 0px 3px 3px #CCBCBC;
 }
 
 .printedNote {
+  font-size: 'Montserrat', sans-serif;
   height: 120px;
-  border:none; 
+  width: 97%;
+  border:none;
   background-color: white;
 }
 
 .button {
+  display: flex;
+ justify-content: space-between;
   flex-direction: row;
-  background-color: white
+  background-color: white;
+  width:100%;
+}
+
+.btnUpdate, .btnDelete{
+  height: 20px;
+  width:20px;
+  background-color: transparent;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+.navbar {
+  display:flex;
+  background-color: blueviolet;
+  position: fixed;
+  margin-bottom: 0;
+  width: 100vw;
+  height: 8%;
+}
+
+.btnLogOut
+{
+  
 }
