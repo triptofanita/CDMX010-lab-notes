@@ -9,10 +9,21 @@ const firebaseConfig = {
   storageBucket: "secret-notes-ii.appspot.com",
   messagingSenderId: "347944666478",
   appId: "1:347944666478:web:0afac988cd932eb3a76d7f"
-  };
+};
   // Initialize Firebase
- const fb = firebase.initializeApp(firebaseConfig);
- const auth = fb.auth();
- const store = fb.firestore();
+const fb = firebase.initializeApp(firebaseConfig);
+const store = fb.firestore();
+const auth = fb.auth();
 
- export {auth, store}
+
+export const signInWithGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithRedirect(provider)
+  .then(() => {
+  })
+  .catch((error) => {
+    console.log(error.mesage)
+  });
+  }
+
+  export {auth, store}

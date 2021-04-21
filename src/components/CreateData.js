@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+//import { UserContext } from '../service/UserProvider';
+//import { Redirect } from 'react-router-dom';
 import { store } from '../service/firebaseconfig';
 import LogOut from './LogOut';
 //import {useHistory} from 'react-router-dom'
@@ -8,11 +10,22 @@ export default function CreateData () {
   const [idNote, setIdNote] = useState('');
   const [note, setNote] = useState('');
   const [getNote, setGetNote] = useState([]);
+  //const user = useContext(UserContext);
+  //const [redirect, setRedirect] = useState(null);
   //const [error, setError] = useState('');
   //const textAreaContainer = document.getElementById('inputSetNote');
   //const textAreaEditor = document.getElementById("editor");
   //const history = useHistory();
   //Se comunica con firebase para obtener la data
+  /*useEffect(()=> {
+    if(!user) {
+      setRedirect('/');
+    }
+  },[user]);
+  if(redirect) {
+    <Redirect to={redirect}/>;
+  }*/
+
   useEffect(() => {
     const getNote = async () => {
       const { docs } = await store.collection('postIt').get();
@@ -45,6 +58,7 @@ export default function CreateData () {
   };
 
   const deleteNote = async (id) => {
+    if (window.confirm('¿Quieres borrar una nota?'))
     try {
       await store.collection('postIt').doc(id).delete();
       const { docs } = await store.collection('postIt').get();
@@ -71,7 +85,9 @@ export default function CreateData () {
         const updatedCollection = await store.collection('postIt').doc(idNote).update({
             note: note,
           });
+          console.log("actualizando nota")
         const { docs } = await store.collection('postIt').get(updatedCollection);
+        console.log('obteniendo notas...')
         const currentArr = docs.map((item) =>
           (item.id === idNote ? { idNote: item.id, ...item.note } : item
         ));

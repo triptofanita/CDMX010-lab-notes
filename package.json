@@ -150,6 +150,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-jsx-source": "^7.12.13",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6"
   }

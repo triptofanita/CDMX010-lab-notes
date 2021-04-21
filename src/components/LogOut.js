@@ -13,7 +13,7 @@ export default function LogOut () {
     const handleLogout = () =>
       auth.signOut()
       .then((result) => {
-        alert(user.displayName + ' Sign out succesfully');
+        alert(user.email + ' Sign out succesfully');
         history.push('/');
       }).catch(function(error){
         alert('An error hapepend');
@@ -24,10 +24,10 @@ export default function LogOut () {
       auth.onAuthStateChanged(user => {
         if(user){
           setUser(user);
+          console.log(user.email )
         }else{
           setUser('')
         }
-        console.log(user.displayName)
       });
     }
 
@@ -38,7 +38,7 @@ export default function LogOut () {
 
   return (
     <div className="navbar">
-          <button onClick={handleLogout} className="btnLogOut" type="submit" value="logout"></button>
+          <img onClick={handleLogout} src={process.env.PUBLIC_URL + './assets/img/on-off-button.png'} alt="" className="btnLogOut" type="submit" value="logout"></img>
     </div>
   )
 }

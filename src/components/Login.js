@@ -3,7 +3,7 @@ import {auth} from '../service/firebaseconfig';
 import {useHistory} from 'react-router-dom';
 import SignupWithGoogle from './SignupWithGoogle';
 
-export default function Login (props) {
+export default function Login () {
 
   const [emailUser, setEmailUser] =useState('');
   const [passwordUser, setPasswordUser] =useState('');
