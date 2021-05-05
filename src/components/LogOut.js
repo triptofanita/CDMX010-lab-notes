@@ -37,8 +37,9 @@ export default function LogOut () {
 
 
   return (
-    <div className="navbar">
-          <img onClick={handleLogout} src={process.env.PUBLIC_URL + './assets/img/on-off-button.png'} alt="" className="btnLogOut" type="submit" value="logout"></img>
+    <div className="navbarLogout">
+          <img onClick={handleLogout} src={process.env.PUBLIC_URL + './assets/img/likeinpink.svg'} alt="" className="btnLikePink" type="submit" value="logout"></img>
+          <img onClick={handleLogout} src={process.env.PUBLIC_URL + './assets/img/logout.svg'} alt="" className="btnLogOut" type="submit" value="logout"></img>
     </div>
   )
 }

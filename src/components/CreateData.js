@@ -1,36 +1,23 @@
 import React, { useState, useEffect } from 'react';
-//import { UserContext } from '../service/UserProvider';
-//import { Redirect } from 'react-router-dom';
 import { store } from '../service/firebaseconfig';
 import LogOut from './LogOut';
-//import {useHistory} from 'react-router-dom'
 
 export default function CreateData () {
   const [updateMode, setUpdateMode] = useState(false);
   const [idNote, setIdNote] = useState('');
   const [note, setNote] = useState('');
   const [getNote, setGetNote] = useState([]);
-  //const user = useContext(UserContext);
-  //const [redirect, setRedirect] = useState(null);
-  //const [error, setError] = useState('');
-  //const textAreaContainer = document.getElementById('inputSetNote');
-  //const textAreaEditor = document.getElementById("editor");
-  //const history = useHistory();
-  //Se comunica con firebase para obtener la data
-  /*useEffect(()=> {
-    if(!user) {
-      setRedirect('/');
-    }
-  },[user]);
-  if(redirect) {
-    <Redirect to={redirect}/>;
-  }*/
+
+  /*const [locura, setlocura]= useState({
+    nota:'',
+    idnota:''
+  })*/
 
   useEffect(() => {
     const getNote = async () => {
       const { docs } = await store.collection('postIt').get();
       const arrNote = docs.map((item) => ({ id: item.id, ...item.data() }));
-      //llamar al nuevo array que contiene la data para renderearla
+      //llamar al nuevo array que contiene la data para renderizar
       setGetNote(arrNote);
     };
     getNote();
@@ -58,7 +45,7 @@ export default function CreateData () {
   };
 
   const deleteNote = async (id) => {
-    if (window.confirm('¿Quieres borrar una nota?'))
+    if (window.confirm('Do you really want to delete this note?'))
     try {
       await store.collection('postIt').doc(id).delete();
       const { docs } = await store.collection('postIt').get();
@@ -104,6 +91,7 @@ export default function CreateData () {
 
   return (
       <div className='notesContainer'>
+        <LogOut />
         <div className='createNoteForm'>
           <form
             onSubmit={updateMode ? setUpdate : createNotes}
@@ -133,9 +121,8 @@ export default function CreateData () {
         <div className='unityNote'>
           <div className='getPostIt'>
             {getNote.map((item) => (
-              <div className='textAreaNote'>
-                <textarea className='printedNote' id='editor' key={item.id}>
-                  {item.note}
+              <div className='textAreaNote' key={item.id}>
+                <textarea className='printedNote' id='editor' value={item.note}>
                 </textarea>
                 <div className='button'>
                   <img
@@ -160,9 +147,6 @@ export default function CreateData () {
               </div>
             ))}
           </div>
-        </div>
-        <div className='navbar'>
-          <LogOut />
         </div>
       </div>
   );

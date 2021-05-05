@@ -38,7 +38,7 @@ test('renders content', () => {
   const component = render(
     <CreateData createNotes ={createNotes} />
   )
-  const inputNote = component.container.querySelector('.inputNote')
+  const inputNote = component.container.querySelector('·inputNote')
 
   console.log(prettyDOM(inputNote))
 });

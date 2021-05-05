@@ -104,7 +104,7 @@ margin-left: 30px;
   margin-bottom: 70px;
 }
 
-.buttonLoginG{
+#btnSigninGoogle{
 border: none;
 background-color: #BB9BB0;
 color:black;
@@ -219,7 +219,7 @@ background-color: #CCBCBC;
 }
 /*CRUD*/
 .notesContainer {
-  margin-top: 15px;
+  margin-top: 0px;
 }
 
 .createNoteForm {
@@ -235,6 +235,7 @@ margin-right: 10px;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   flex-wrap: wrap;
+  margin-top: 58px;
 }
 .textareaSetNote{
   height: 140px;
@@ -315,21 +316,37 @@ margin-right: 10px;
 .btnUpdate, .btnDelete{
   height: 20px;
   width:20px;
-  background-color: transparent;
+  background-color:transparent;
   margin-left: 7px;
   margin-right: 7px;
 }
 
-.navbar {
+.navbarLogout {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
-  margin-bottom: 0;
+  z-index:100;
+  margin-bottom:0;
   width: 100vw;
-  height: 8%;
+  height: 5.5%;
+  border: 1px solid white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: rotate(0deg);
 }
 
 .btnLogOut{
+margin-top:10px;
 height: 22px;
-width: 25px;
-margin-left: 350px;
-margin-top: 15px;
+width: 23px;
+margin-right: 30px;
 }
+
+.btnLikePink{
+margin-top: 10px;
+height: 22px;
+width: 23px;
+margin-left: 30px;
+}
+
+
+
